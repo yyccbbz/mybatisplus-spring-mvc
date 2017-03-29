@@ -32,6 +32,9 @@ public class UserController extends BaseController {
         this.userService = userService;
     }
 
+    /**
+     * 大客户系统首页
+     */
     @RequestMapping("/")
     public ModelAndView index(ModelAndView modelAndView) {
         modelAndView.setViewName("/pages/index");

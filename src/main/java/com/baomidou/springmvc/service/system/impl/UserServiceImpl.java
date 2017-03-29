@@ -1,11 +1,10 @@
 package com.baomidou.springmvc.service.system.impl;
 
-import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.baomidou.springmvc.mapper.system.UserMapper;
 import com.baomidou.springmvc.model.system.User;
+import com.baomidou.springmvc.service.support.BaseServiceImpl;
 import com.baomidou.springmvc.service.system.IUserService;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -13,7 +12,7 @@ import com.baomidou.springmvc.service.system.IUserService;
  *
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
 
 
 }

@@ -7,14 +7,14 @@
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<title>大客户系统</title>
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/bootstrap/css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/private.css"/>
+	<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/private.css"/>
 	<!--<link rel="stylesheet" type="text/css" href="/static/css/calendar.css"/>-->
-	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/commonalityStyle_01.css"/>
-	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/index.css"/>
-	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/laydate.css"/>
-	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/checkbox.css"/>
-	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/search.css"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/commonalityStyle_01.css"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/laydate.css"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/checkbox.css"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/search.css"/>
 
 	<style>
 		th, td {
@@ -23,12 +23,13 @@
 	</style>
 
 	<!-- JS -->
-	<script type="text/javascript" src="http://localhost:8081/static/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://localhost:8081/static/js/pagehelper.js"></script>
-	<script type="text/javascript" src="http://localhost:8081/static/js/jquery.ajaxfileupload.js"></script>
-	<script type="text/javascript" src="http://localhost:8081/static/js/base.js"></script>
-	<script type="text/javascript" src="http://localhost:8081/static/js/commons.js"></script>
-	<script type="text/javascript" src="http://localhost:8081/static/js/laydate.js"></script>
+	<script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../static/jquery/jquery-2.2.3.min.js/"></script>
+	<script type="text/javascript" src="../static/js/pagehelper.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.ajaxfileupload.js"></script>
+	<script type="text/javascript" src="../static/js/base.js"></script>
+	<script type="text/javascript" src="../static/js/commons.js"></script>
+	<script type="text/javascript" src="../static/js/laydate.js"></script>
 	<!--<script type="text/javascript" src="http://bigdata.blazer.org:8030/js/userservice.js" charset="UTF-8"></script>-->
 	<script>
         //	var $userservice = new $userservice("big-client");
@@ -52,7 +53,7 @@
                 /**customer list*/
                 var link_li_a1 = $('#list_a_1');
                 link_li_a1.click(function () {
-                    setSrc(this, 'html/cl/extuser_bak.html');
+                    setSrc(this, '/html/cl/extuser_bak.html');
                 });
                 link_ul.append(link_li_a1);
                 //
@@ -202,9 +203,9 @@
 	<header class="header clearfix">
 		<section class="header_content clearfix">
 			<nav class="header_content_nav clearfix">
-					<span class="logo">
-						<img src="images/logo.png" width="300">
-					</span>
+				<span class="logo">
+					<img src="../static/images/logo.png" width="300">
+				</span>
 				<ul class="in_left width1003" style="margin-left:300px;">
 					<li class="nav_one"><a href="javascript:void(0);" class="nav_one_Selected">客户名单</a>
 						<ul>
@@ -261,7 +262,7 @@
 	<div id="center_head" class="panel-heading">默认</div>
 	<div id="center" class="panel-body"></div>
 </div>
-<div id="south" class="copyright">©版本号：2.1.2</div>
+<div id="south" class="copyright">©版本号：3.0.0</div>
 </body>
 <script type="text/javascript">
     function stylesWitch(e) {
