@@ -1,0 +1,101 @@
+<script>
+    $(function () {
+        //接受传参
+        var queryString = "${queryString}";
+        // 当前窗口id
+        var windowId = "${windowId}";
+        //当前窗口dom对象
+        var this_window = $("#" + windowId);
+        //获取参数
+        var id = $util.getQueryString(queryString, "id");
+        var serialNumber = $util.getQueryString(queryString, "serialNumber");
+        var level = $util.getQueryString(queryString, "level");
+        var systemName = $util.getQueryString(queryString, "systemName");
+        var actualName = $util.getQueryString(queryString, "actualName");
+        var phoneNumber = $util.getQueryString(queryString, "phoneNumber");
+        var email = $util.getQueryString(queryString, "email");
+        var teamName = $util.getQueryString(queryString, "teamName");
+        var teamLeaderName = $util.getQueryString(queryString, "teamLeaderName");
+        var totalNumber = $util.getQueryString(queryString, "totalNumber");
+        var area = $util.getQueryString(queryString, "area");
+
+        //查询所有投顾组,构建options
+        $.post("advisor_team/findAll.do", function (data) {
+            for (var i = 0; i < data.length; i++) {
+                this_window.find(" select[name=teamName]").append("<option value='" + data[i].teamName + "'>" + data[i].teamName + "</option>");
+            }
+
+            //回显数据
+            if (id != null) {
+                this_window.find("input[name=serialNumber]").val(serialNumber);
+                this_window.find("input[name=level]").val(level);
+                this_window.find("input[name=systemName]").val(systemName);
+                this_window.find("input[name=actualName]").val(actualName);
+                this_window.find("input[name=phoneNumber]").val(phoneNumber);
+                this_window.find("input[name=email]").val(email);
+                this_window.find("select[name=teamName]").val(teamName);
+            }
+
+        });
+
+
+        /**
+         * 触发保存按钮
+         */
+        $util.modalOnSave(windowId, function () {
+            $.post("advisor/saveOne.do", {
+                id: id,
+                serialNumber: this_window.find("input[name=serialNumber]").val(),
+                level: this_window.find("input[name=level]").val(),
+                systemName: this_window.find("input[name=systemName]").val(),
+                actualName: this_window.find("input[name=actualName]").val(),
+                phoneNumber: this_window.find("input[name=phoneNumber]").val(),
+                email: this_window.find("input[name=email]").val(),
+                teamName: this_window.find("select[name=teamName]").val()
+            }, function (data) {
+                if (data.code == 1) {
+                    //保存成功，关闭当前窗口
+                    $util.modalOnClose(windowId);
+                }
+                alert(data.msg);
+            });
+        });
+
+    });
+
+</script>
+
+
+<div class="input-group">
+    <span class="input-group-addon">投顾编号</span>
+    <input type="text" class="form-control" name="serialNumber" placeholder="请输入投顾编号">
+</div>
+<div class="input-group">
+    <span class="input-group-addon">投顾级别</span>
+    <input type="text" class="form-control" name="level" placeholder="请输入投顾级别">
+</div>
+<div class="input-group">
+    <span class="input-group-addon">系统用户名</span>
+    <input type="text" class="form-control" name="systemName" placeholder="请输入系统用户名">
+</div>
+<div class="input-group">
+    <span class="input-group-addon">投顾姓名</span>
+    <input type="text" class="form-control" name="actualName" placeholder="请输入投顾姓名">
+</div>
+<div class="input-group">
+    <span class="input-group-addon">手机号码</span>
+    <input type="text" class="form-control" name="phoneNumber" placeholder="请输入手机号码">
+</div>
+<div class="input-group">
+    <span class="input-group-addon">电子邮箱</span>
+    <input type="text" class="form-control" name="email" placeholder="请输入电子邮箱">
+</div>
+<div class="input-group">
+    <span class="input-group-addon">所在团队</span>
+    <select id="teamName" name="teamName" class="form-control">
+        <option selected>请选择所在团队</option>
+    </select>
+</div>
+
+
+

@@ -1,0 +1,104 @@
+<script>
+    $(function () {
+        var lock = false;
+        // 定义分页控件
+        var pagination = new PageHelper("pagination");
+        var _currentPage_lastCurrent = 1;
+        var findByPage = function (currentPage) {
+            if (lock) {
+                return;
+            }
+            _currentPage_lastCurrent = currentPage;
+            lock = true;
+            $.post("pr/constitute_customer/findByPage.do", {
+                currentPage: currentPage,
+                pageSize: 10,
+                search: search_text
+            }, function (data) {
+                init(data.list);
+                // 初始化分页控件：参数：(当前页，页大小，总条数，点击分页时候调用的方法)
+                pagination.init(data.pageNum, data.pageSize, data.total, findByPage);
+                lock = false;
+            });
+        };
+
+        //刷新当前页
+        var reload = function () {
+            findByPage(_currentPage_lastCurrent);
+        };
+
+        // 初始化数据
+        var init = function (rst) {
+            $("#tb>tbody").empty();
+            for (var i in rst) {
+                var cls = "warning";
+                var tr = $('<tr class="' + cls + '">');
+
+                tr.append('<td>' + rst[i].investmentAdvisor+ '</td>');
+                tr.append('<td>' + rst[i].performanceCustomersNumber+ '</td>');
+                tr.append('<td>' + rst[i].pureNewVipCustomers+ '</td>');
+                tr.append('<td>' + rst[i].reportedCustomersNumber+ '</td>');
+                tr.append('<td>' + rst[i].allotCustomersNumber+ '</td>');
+                tr.append('<td>' + rst[i].weeklyGetCustomersNumber+ '</td>');
+                tr.append('<td>' + rst[i].currentVipCustomersNumber+ '</td>');
+
+                $("#tb>tbody").append(tr);
+            }
+        };
+
+        findByPage(1);
+        $("#search").click(function () {
+            findByPage(1);
+        });
+        var search_text = "";
+        $("#search_text").change(function () {
+            search_text = $(this).val();
+        });
+
+        /**
+         * ajax下载excel
+         */
+        $("#exportExcel").click(function () {
+            downLoadFile({
+                url: 'pr/constitute_customer/exportExcel.do', //请求的url
+                data: {search: search_text},//要发送的数据
+                callback: function () {
+                    //alert("导出excel文件成功");
+                }
+            });
+        });
+
+    });
+</script>
+<div class="row" style="margin: 0;">
+    <div class="input-group has-primary" style="float: left; width: 300px;">
+        <input id="search_text" type="text" class="form-control" placeholder="投顾姓名的模糊查询..."/>
+        <span class="input-group-btn">
+			<button id="search" class="btn btn-primary" type="button">搜索</button>
+		</span>
+    </div>
+    <button type="button" id="exportExcel" class="btn btn-primary" style="float: right;">导出Excel</button>
+</div>
+<hr class="line-3"/>
+<div class="table-responsive">
+    <table id="tb" class="table table-hover table-condensed table-bordered">
+        <thead>
+        <tr>
+            <th width="16%" rowspan="2" style="line-height: 60px;">投资顾问</th>
+            <th width="16%" rowspan="2" style="line-height: 60px;">计入业绩客户数</th>
+            <th width="16%" rowspan="2" style="line-height: 60px;">纯新增vip客户数</th>
+            <th width="20%" colspan="2" >提升vip客户数</th>
+            <th width="16%" rowspan="2" style="line-height: 60px;">本周获客数</th>
+            <th width="16%" rowspan="2" style="line-height: 60px;">当前vip客户数</th>
+        </tr>
+        <tr>
+            <th>上报客户数</th>
+            <th>分配客户数</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<ul id="pagination" class="pagination" style="cursor:pointer"></ul>

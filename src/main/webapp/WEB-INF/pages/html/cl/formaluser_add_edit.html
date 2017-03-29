@@ -1,0 +1,55 @@
+<script>
+    $(function () {
+        //接受传参
+        var queryString = "${queryString}";
+        // 当前窗口id
+        var windowId = "${windowId}";
+        //当前窗口dom对象
+        var this_window = $("#" + windowId);
+        //获取参数
+        var id = $util.getQueryString(queryString, "id");
+        var phoneNumber = $util.getQueryString(queryString, "phoneNumber");
+        var ifPerformancePool = $util.getQueryString(queryString, "ifPerformancePool");
+        //回显数据
+        if (id != null) {
+            this_window.find("input[name=phoneNumber]").val(phoneNumber);
+            this_window.find("input[name=ifPerformancePool][value='" + ifPerformancePool + "']").attr("checked", true);
+        }
+
+        /**
+         * 触发保存按钮
+         */
+        $util.modalOnSave(windowId, function () {
+            $.post("cl/formal/saveOne.do", {
+                id: id,
+                phoneNumber: this_window.find("input[name=phoneNumber]").val(),
+                ifPerformancePool: this_window.find("input[name=ifPerformancePool]:checked").val(),
+            }, function (data) {
+                if (data.code == 1) {
+                    //保存成功，关闭当前窗口
+                    $util.modalOnClose(windowId);
+                }
+                alert(data.msg);
+            });
+        });
+
+    });
+
+</script>
+
+
+<div class="input-group">
+    <span class="input-group-addon">手机号码</span>
+    <input type="text" class="form-control" name="phoneNumber" placeholder="请输入手机号码" disabled>
+</div>
+
+<div class="input-group">
+    <span class="input-group-addon">是否业绩池</span>
+    <label class="radio-inline">
+        <input type="radio" name="ifPerformancePool" value="1" checked> 是
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="ifPerformancePool" value="0"> 否
+    </label>
+</div>
+

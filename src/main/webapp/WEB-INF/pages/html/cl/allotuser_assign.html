@@ -1,0 +1,53 @@
+<script>
+    $(function () {
+        //接受传参
+        var queryString = "${queryString}";
+        // 当前窗口id
+        var windowId = "${windowId}";
+        //当前窗口dom对象
+        var this_window = $("#" + windowId);
+        //获取参数
+        var ids = $util.getQueryString(queryString, "ids");
+
+        //查询所有投顾,构建options
+        $.post("advisor/findAll.do", function (data) {
+            for (var i = 0; i < data.length; i++) {
+                this_window.find(" select[name=advisor]").append("<option value='" + data[i].id + "'>" + data[i].actualName + "</option>");
+            }
+        });
+
+        /**
+         * 触发保存按钮
+         */
+        $util.modalOnSave(windowId, function () {
+            $.post("cl/allot/assignToFormal.do", {
+                ids: ids,
+                advisorId: this_window.find("select[name=advisor]").val()
+            }, function (data) {
+                if (data.code == 1) {
+                    //保存成功，关闭当前窗口
+                    $util.modalOnClose(windowId);
+                }
+                alert(data.msg);
+            });
+        });
+
+    });
+
+</script>
+
+
+<div class="input-group">
+    <span class="input-group-addon">友情提示</span>
+    <input type="text" class="form-control" name="userName" value="请为您选择的客户分配一位投资顾问！" disabled>
+</div>
+
+<div class="input-group">
+    <span class="input-group-addon">投资顾问</span>
+    <select id="advisor" name="advisor" class="form-control">
+        <option selected>请选择投资顾问</option>
+    </select>
+</div>
+
+
+
