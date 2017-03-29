@@ -1,206 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<title>大客户系统</title>
-<!-- Bootstrap -->
-	<link href="css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/private.css"/>
-	<link rel="stylesheet" type="text/css" href="css/calendar.css"/>
-	<link rel="stylesheet" href="css/commonalityStyle_01.css"/>
-	<link rel="stylesheet" type="text/css" href="css/index.css"/>
-	<link rel="stylesheet" type="text/css" href="css/laydate.css"/>
-	<link rel="stylesheet" type="text/css" href="css/checkbox.css"/>
-	<link rel="stylesheet" type="text/css" href="css/search.css"/>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<title>大客户系统</title>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/private.css"/>
+	<!--<link rel="stylesheet" type="text/css" href="/static/css/calendar.css"/>-->
+	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/commonalityStyle_01.css"/>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/laydate.css"/>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/checkbox.css"/>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8081/static/css/search.css"/>
 
 	<style>
 		th, td {
 			text-align: center;
 		}
 	</style>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/pagehelper.js"></script>
-	<script src="js/jquery.ajaxfileupload.js"></script>
-	<script src="js/base.js"></script>
-	<script src="js/commons.js"></script>
-	<script type="text/javascript" src="js/laydate.js"></script>
-	<script type="text/javascript" charset="utf-8" src="http://bigdata.blazer.org:8030/js/userservice.js"></script>
-<script>
-	var $userservice = new $userservice("big-client");
-	window.onload = function() {
 
-		//获取用户名
-//		$(".login>li:eq(0)").append($userservice.userName + '('+ $userservice.userNameCn+')');
-		$("#showname").text($userservice.userNameCn);
-		$("#logout").click(function(){
-			$userservice.logout();
-		});
+	<!-- JS -->
+	<script type="text/javascript" src="http://localhost:8081/static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://localhost:8081/static/js/pagehelper.js"></script>
+	<script type="text/javascript" src="http://localhost:8081/static/js/jquery.ajaxfileupload.js"></script>
+	<script type="text/javascript" src="http://localhost:8081/static/js/base.js"></script>
+	<script type="text/javascript" src="http://localhost:8081/static/js/commons.js"></script>
+	<script type="text/javascript" src="http://localhost:8081/static/js/laydate.js"></script>
+	<!--<script type="text/javascript" src="http://bigdata.blazer.org:8030/js/userservice.js" charset="UTF-8"></script>-->
+	<script>
+        //	var $userservice = new $userservice("big-client");
+        window.onload = function() {
 
-		var width = $(window).width();
-		var height = $(window).height();
-		$("#center").width(width - 40);
-		$("#center").height(height - $("#north").height() - $("#south").height() - 150);
-		var init = function () {
-			var body = $('body');
-			var link_ul = $('#ulnavbar');
+            //获取用户名
+            //		$(".login>li:eq(0)").append($userservice.userName + '('+ $userservice.userNameCn+')');
+            //		$("#showname").text($userservice.userNameCn);
+            $("#logout").click(function(){
+                $userservice.logout();
+            });
 
-			/**customer list*/
-			var link_li_a1 = $('#list_a_1');
-			link_li_a1.click(function () {
-				setSrc(this, 'html/cl/extuser_bak.html');
-			});
-			link_ul.append(link_li_a1);
-			//
-			var link_li_a2 = $('#list_a_2');
-			link_li_a2.click(function () {
-				setSrc(this, 'html/cl/extuser.html');
-			});
-			link_ul.append(link_li_a2);
-			//
-			var link_li_a3 = $('#list_a_3');
-			link_li_a3.click(function () {
-				setSrc(this, 'html/cl/allotuser.html');
-			});
-			link_ul.append(link_li_a3);
-			//
-			var link_li_a4 = $('#list_a_4');
-			link_li_a4.click(function () {
-				setSrc(this, 'html/cl/formaluser.html');
-			});
-			link_ul.append(link_li_a4);
+            var width = $(window).width();
+            var height = $(window).height();
+            $("#center").width(width - 40);
+            $("#center").height(height - $("#north").height() - $("#south").height() - 150);
+            var init = function () {
+                var body = $('body');
+                var link_ul = $('#ulnavbar');
 
-			/**statistical report*/
-			var link_li_b1 = $('#list_b_1');
-			link_li_b1.click(function () {
-				setSrc(this, 'html/sr/assets_balance.html');
-			});
-			link_ul.append(link_li_b1);
-			var link_li_b2 = $('#list_b_2');
-			link_li_b2.click(function () {
-				setSrc(this, 'html/sr/regular_sales_details.html');
-			});
-			link_ul.append(link_li_b2);
-			var link_li_b3 = $('#list_b_3');
-			link_li_b3.click(function () {
-				setSrc(this, 'html/sr/current_sales_details.html');
-			});
-			link_ul.append(link_li_b3);
-			var link_li_b4 = $('#list_b_4');
-			link_li_b4.click(function () {
-				setSrc(this, 'html/sr/current_package_regular_sales_details.html');
-			});
-			link_ul.append(link_li_b4);
-			var link_li_b5 = $('#list_b_5');
-			link_li_b5.click(function () {
-				setSrc(this, 'html/sr/regular_payment_due.html');
-			});
-			link_ul.append(link_li_b5);
-			var link_li_b6 = $('#list_b_6');
-			link_li_b6.click(function () {
-				setSrc(this, 'html/sr/current_redemption.html');
-			});
-			link_ul.append(link_li_b6);
-			var link_li_b7 = $('#list_b_7');
-			link_li_b7.click(function () {
-				setSrc(this, 'html/sr/crp_payment_due.html');
-			});
-			link_ul.append(link_li_b7);
+                /**customer list*/
+                var link_li_a1 = $('#list_a_1');
+                link_li_a1.click(function () {
+                    setSrc(this, 'html/cl/extuser_bak.html');
+                });
+                link_ul.append(link_li_a1);
+                //
+                var link_li_a2 = $('#list_a_2');
+                link_li_a2.click(function () {
+                    setSrc(this, 'html/cl/extuser.html');
+                });
+                link_ul.append(link_li_a2);
+                //
+                var link_li_a3 = $('#list_a_3');
+                link_li_a3.click(function () {
+                    setSrc(this, 'html/cl/allotuser.html');
+                });
+                link_ul.append(link_li_a3);
+                //
+                var link_li_a4 = $('#list_a_4');
+                link_li_a4.click(function () {
+                    setSrc(this, 'html/cl/formaluser.html');
+                });
+                link_ul.append(link_li_a4);
 
-			/**performance accounting*/
-			var link_li_c1 = $('#list_c_1');
-			link_li_c1.click(function () {
-				setSrc(this, 'html/pa/regular_sales_scale_accounting.html');
-			});
-			link_ul.append(link_li_c1);
-			var link_li_c2 = $('#list_c_2');
-			link_li_c2.click(function () {
-				setSrc(this, 'html/pa/current_sales_scale_accounting.html');
-			});
-			link_ul.append(link_li_c2);
-			var link_li_c3 = $('#list_c_3');
-			link_li_c3.click(function () {
-				setSrc(this, 'html/pa/current_package_regular_sales_scale_accounting.html');
-			});
-			link_ul.append(link_li_c3);
-			var link_li_c4 = $('#list_c_4');
-			link_li_c4.click(function () {
-				setSrc(this, 'html/pa/customers_accounting.html');
-			});
-			link_ul.append(link_li_c4);
+                /**statistical report*/
+                var link_li_b1 = $('#list_b_1');
+                link_li_b1.click(function () {
+                    setSrc(this, 'html/sr/assets_balance.html');
+                });
+                link_ul.append(link_li_b1);
+                var link_li_b2 = $('#list_b_2');
+                link_li_b2.click(function () {
+                    setSrc(this, 'html/sr/regular_sales_details.html');
+                });
+                link_ul.append(link_li_b2);
+                var link_li_b3 = $('#list_b_3');
+                link_li_b3.click(function () {
+                    setSrc(this, 'html/sr/current_sales_details.html');
+                });
+                link_ul.append(link_li_b3);
+                var link_li_b4 = $('#list_b_4');
+                link_li_b4.click(function () {
+                    setSrc(this, 'html/sr/current_package_regular_sales_details.html');
+                });
+                link_ul.append(link_li_b4);
+                var link_li_b5 = $('#list_b_5');
+                link_li_b5.click(function () {
+                    setSrc(this, 'html/sr/regular_payment_due.html');
+                });
+                link_ul.append(link_li_b5);
+                var link_li_b6 = $('#list_b_6');
+                link_li_b6.click(function () {
+                    setSrc(this, 'html/sr/current_redemption.html');
+                });
+                link_ul.append(link_li_b6);
+                var link_li_b7 = $('#list_b_7');
+                link_li_b7.click(function () {
+                    setSrc(this, 'html/sr/crp_payment_due.html');
+                });
+                link_ul.append(link_li_b7);
 
-			/**performance report*/
-			var link_li_d1 = $('#list_d_1');
-			link_li_d1.click(function () {
-				setSrc(this, 'html/pr/performance_report.html');
-			});
-			link_ul.append(link_li_d1);
-			var link_li_d2 = $('#list_d_2');
-			link_li_d2.click(function () {
-				setSrc(this, 'html/pr/constitute_customer.html');
-			});
-			link_ul.append(link_li_d2);
-			var link_li_d3 = $('#list_d_3');
-			link_li_d3.click(function () {
-				setSrc(this, 'html/pr/customer_conversion_rate.html');
-			});
-			link_ul.append(link_li_d3);
-			var link_li_d4 = $('#list_d_4');
-			link_li_d4.click(function () {
-				setSrc(this, 'html/pr/regular_payment.html');
-			});
-			link_ul.append(link_li_d4);
-			var link_li_d5 = $('#list_d_5');
-			link_li_d5.click(function () {
-				setSrc(this, 'html/pr/return_payment.html');
-			});
-			link_ul.append(link_li_d5);
+                /**performance accounting*/
+                var link_li_c1 = $('#list_c_1');
+                link_li_c1.click(function () {
+                    setSrc(this, 'html/pa/regular_sales_scale_accounting.html');
+                });
+                link_ul.append(link_li_c1);
+                var link_li_c2 = $('#list_c_2');
+                link_li_c2.click(function () {
+                    setSrc(this, 'html/pa/current_sales_scale_accounting.html');
+                });
+                link_ul.append(link_li_c2);
+                var link_li_c3 = $('#list_c_3');
+                link_li_c3.click(function () {
+                    setSrc(this, 'html/pa/current_package_regular_sales_scale_accounting.html');
+                });
+                link_ul.append(link_li_c3);
+                var link_li_c4 = $('#list_c_4');
+                link_li_c4.click(function () {
+                    setSrc(this, 'html/pa/customers_accounting.html');
+                });
+                link_ul.append(link_li_c4);
+
+                /**performance report*/
+                var link_li_d1 = $('#list_d_1');
+                link_li_d1.click(function () {
+                    setSrc(this, 'html/pr/performance_report.html');
+                });
+                link_ul.append(link_li_d1);
+                var link_li_d2 = $('#list_d_2');
+                link_li_d2.click(function () {
+                    setSrc(this, 'html/pr/constitute_customer.html');
+                });
+                link_ul.append(link_li_d2);
+                var link_li_d3 = $('#list_d_3');
+                link_li_d3.click(function () {
+                    setSrc(this, 'html/pr/customer_conversion_rate.html');
+                });
+                link_ul.append(link_li_d3);
+                var link_li_d4 = $('#list_d_4');
+                link_li_d4.click(function () {
+                    setSrc(this, 'html/pr/regular_payment.html');
+                });
+                link_ul.append(link_li_d4);
+                var link_li_d5 = $('#list_d_5');
+                link_li_d5.click(function () {
+                    setSrc(this, 'html/pr/return_payment.html');
+                });
+                link_ul.append(link_li_d5);
 
 
-			/**others*/
-			var link_li_e1 = $('#list_e_1');
-			link_li_e1.click(function () {
-				setSrc(this, 'html/zh/advisor.html');
-			});
-			link_ul.append(link_li_e1);
-			var link_li_e2 = $('#list_e_2');
-			link_li_e2.click(function () {
-				setSrc(this, 'html/zh/charts1.html');
-			});
-			link_ul.append(link_li_e2);
+                /**others*/
+                var link_li_e1 = $('#list_e_1');
+                link_li_e1.click(function () {
+                    setSrc(this, 'html/zh/advisor.html');
+                });
+                link_ul.append(link_li_e1);
+                var link_li_e2 = $('#list_e_2');
+                link_li_e2.click(function () {
+                    setSrc(this, 'html/zh/charts1.html');
+                });
+                link_ul.append(link_li_e2);
 
-			//默认页面
-			link_li_a1.click();
-		};
-		var setSrc = function(obj, src) {
-			$("#center_head").text($(obj).text());
-			$("#ulnavbar .active").removeClass();
-			$(obj).addClass("active");
-			if (!$('#headBtn').hasClass('collapsed')) {
-				$('#headBtn').click();
-			}
-			if ($("#center").attr("src") == src) {
-				return;
-			}
-			$("#center").attr("src", src);
-			htmlobj = $.ajax({
-				url : src,
-				async : false
-			});
-			$("#center").html(htmlobj.responseText);
-		};
-		init();
-	};
-</script>
+                //默认页面
+                link_li_a1.click();
+            };
+            var setSrc = function(obj, src) {
+                $("#center_head").text($(obj).text());
+                $("#ulnavbar .active").removeClass();
+                $(obj).addClass("active");
+                if (!$('#headBtn').hasClass('collapsed')) {
+                    $('#headBtn').click();
+                }
+                if ($("#center").attr("src") == src) {
+                    return;
+                }
+                $("#center").attr("src", src);
+                htmlobj = $.ajax({
+                    url : src,
+                    async : false
+                });
+                $("#center").html(htmlobj.responseText);
+            };
+            init();
+        };
+	</script>
 </head>
 <body>
-	<div id="north">
-			<header class="header clearfix">
-			<section class="header_content clearfix">
-				<nav class="header_content_nav clearfix">	
+<div id="north">
+	<header class="header clearfix">
+		<section class="header_content clearfix">
+			<nav class="header_content_nav clearfix">
 					<span class="logo">
 						<img src="images/logo.png" width="300">
 					</span>
@@ -252,21 +253,21 @@
 					<li class="in_left"><a id="showname" href="javascript:void(0);" class="border"></a></li>
 					<li class="in_left"><a id="logout" href="javascript:void(0);" class="border">登出</a></li>
 				</ul>
-				</nav>
-			</section>
-		</header>
-	</div>
-	<div class="panel panel-primary panel-border" style="margin-top:20px;align: center;">
-		<div id="center_head" class="panel-heading">默认</div>
-		<div id="center" class="panel-body"></div>
-	</div>
-	<div id="south" class="copyright">©版本号：2.1.2</div>
+			</nav>
+		</section>
+	</header>
+</div>
+<div class="panel panel-primary panel-border" style="margin-top:20px;align: center;">
+	<div id="center_head" class="panel-heading">默认</div>
+	<div id="center" class="panel-body"></div>
+</div>
+<div id="south" class="copyright">©版本号：2.1.2</div>
 </body>
 <script type="text/javascript">
-	  function stylesWitch(e) {           
-            $('.nav_one').children('a').removeClass('nav_one_Selected');
-            $(e).parents('.nav_one').children('a').addClass('nav_one_Selected');
-        }
+    function stylesWitch(e) {
+        $('.nav_one').children('a').removeClass('nav_one_Selected');
+        $(e).parents('.nav_one').children('a').addClass('nav_one_Selected');
+    }
 </script>
 
 </html>
