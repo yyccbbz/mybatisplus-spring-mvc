@@ -20,8 +20,7 @@
         <mvc:message-converters register-defaults="true">
             <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
             <!-- FastJson -->
-            <bean id="fastJsonHttpMessageConverter"
-                  class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+            <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
                 <property name="supportedMediaTypes">
                     <list>
                         <!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
@@ -52,7 +51,11 @@
 
 
     <!-- 静态资源配置 -->
-    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
+    <mvc:resources location="/pages/html/" mapping="/pages/html/**"/>
+    <mvc:resources location="/pages/" mapping="*.html"/>
+    <mvc:resources location="/" mapping="*.html"/>
+
 
     <!-- 对模型视图名称的解析,即在模型视图名称添加前后缀 -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -60,8 +63,7 @@
         <property name="suffix" value=".jps"/>
     </bean>-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
-        <!--<property name="viewNames" value="appServer*"/>-->
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="contentType" value="text/html"/>
         <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".html"/>
@@ -71,6 +73,8 @@
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 上传文件大小限制为31M，31*1024*1024 -->
         <property name="maxUploadSize" value="32505856"/>
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="utf-8" />
     </bean>
 
 </beans>
