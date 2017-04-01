@@ -4,7 +4,7 @@
 	<groupId>com.baomidou</groupId>
 	<artifactId>mybatisplus-spring-mvc</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>3.0.0-SNAPSHOT</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -176,6 +176,13 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
+
+		<!-- web servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -197,7 +204,7 @@
 				<version>1.0</version>
 				<configuration>
 					<!-- 输出目录(默认java.io.tmpdir) -->
-					<outputDir>F:\\workspace\\idea2016\\mybatisplus-spring-mvc\\mybatisplus-spring-mvc\\src\\test\\java\\test\\generator</outputDir>
+					<outputDir>F:\\generator</outputDir>
 					<!-- 是否覆盖同名文件(默认false) -->
 					<fileOverride>true</fileOverride>
 					<!-- mapper.xml 中添加二级缓存配置(默认true) -->
@@ -205,11 +212,11 @@
 					<!-- 开发者名称 -->
 					<author>CuiCan</author>
 					<!-- 是否开启 ActiveRecord 模式(默认true) -->
-					<!--<activeRecord>false</activeRecord>-->
+					<activeRecord>false</activeRecord>
 					<!-- 数据源配置，( **必配** ) -->
 					<dataSource>
 						<driverName>com.mysql.jdbc.Driver</driverName>
-						<url>jdbc:mysql://localhost:3306/mybatis-plus?characterEncoding=utf8</url>
+						<url>jdbc:mysql://localhost:3306/big_client_new?characterEncoding=utf8</url>
 						<username>root</username>
 						<password>111111</password>
 					</dataSource>
@@ -225,7 +232,7 @@
 						<!--Entity中的ID生成策略（默认 id_worker）-->
 						<idGenType>id_worker</idGenType>
 						<!--自定义超类-->
-						<!--<superServiceClass>com.baomidou.base.BaseService</superServiceClass>-->
+						<superServiceClass>com.baomidou.mybatisplus.service.IService</superServiceClass>
 						<!-- 要包含的表 与exclude 二选一配置-->
 						<!--<include>-->
 						<!--<property>sec_user</property>-->

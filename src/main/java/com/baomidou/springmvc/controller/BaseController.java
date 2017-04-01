@@ -2,6 +2,10 @@ package com.baomidou.springmvc.controller;
 
 import com.baomidou.springmvc.common.result.JsonResult;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.HashMap;
+
 /**
  * Author: D.Yang
  * Email: koyangslash@gmail.com
@@ -69,4 +73,15 @@ public class BaseController {
         result.setObj(obj);
         return result;
     }
+
+    public HashMap<String, String> getParamMap(HttpServletRequest request) {
+        HashMap<String, String> paramMap = new HashMap<String, String>();
+        Enumeration<String> enumeration = request.getParameterNames();
+        while (enumeration.hasMoreElements()) {
+            String key = enumeration.nextElement();
+            paramMap.put(key, request.getParameter(key));
+        }
+        return paramMap;
+    }
+
 }

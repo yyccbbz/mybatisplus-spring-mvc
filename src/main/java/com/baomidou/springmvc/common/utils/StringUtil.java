@@ -32,6 +32,29 @@ public class StringUtil {
         return !isEmpty(str);
     }
 
+
+    /**
+     * 校验为空串
+     *
+     * @param o
+     * @return
+     */
+    public static String getStrEmpty(Object o) {
+        return o == null ? "" : o.toString();
+    }
+
+    /**
+     * 校验为null
+     *
+     * @param o
+     * @return
+     */
+    public static String getStr(Object o) {
+        return o == null ? null : o.toString();
+    }
+
+
+
     /**
      * 驼峰转下划线工具
      *

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baomidou.springmvc.mapper.main.PaCurrentSalesScaleAccountingMapper">
+	<!--开启二级缓存-->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+	<resultMap id="BaseResultMap" type="com.baomidou.springmvc.model.main.PaCurrentSalesScaleAccounting">
+		<id column="id" property="id" />
+		<result column="user_name" property="userName" />
+		<result column="phone_number" property="phoneNumber" />
+		<result column="report_or_allot" property="reportOrAllot" />
+		<result column="report_or_allot_date" property="reportOrAllotDate" />
+		<result column="investment_adviser" property="investmentAdviser" />
+		<result column="user_identify" property="userIdentify" />
+		<result column="basic_product_name" property="basicProductName" />
+		<result column="monthly_purchase_amount" property="monthlyPurchaseAmount" />
+		<result column="current_assets_total" property="currentAssetsTotal" />
+		<result column="purchase_date" property="purchaseDate" />
+		<result column="monthly_purchase_amount_10" property="monthlyPurchaseAmount0" />
+		<result column="performance_pool_coefficient" property="performancePoolCoefficient" />
+		<result column="effective_current_sales_scale" property="effectiveCurrentSalesScale" />
+		<result column="deferred_next_month" property="deferredNextMonth" />
+		<result column="mtime" property="mtime" />
+		<result column="ctime" property="ctime" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        id, user_name AS userName, phone_number AS phoneNumber, report_or_allot AS reportOrAllot, report_or_allot_date AS reportOrAllotDate, investment_adviser AS investmentAdviser, user_identify AS userIdentify, basic_product_name AS basicProductName, monthly_purchase_amount AS monthlyPurchaseAmount, current_assets_total AS currentAssetsTotal, purchase_date AS purchaseDate, monthly_purchase_amount_10 AS monthlyPurchaseAmount0, performance_pool_coefficient AS performancePoolCoefficient, effective_current_sales_scale AS effectiveCurrentSalesScale, deferred_next_month AS deferredNextMonth, mtime, ctime
+    </sql>
+</mapper>
