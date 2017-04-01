@@ -16,7 +16,7 @@
 		<result column="monthly_purchase_amount" property="monthlyPurchaseAmount" />
 		<result column="current_assets_total" property="currentAssetsTotal" />
 		<result column="purchase_date" property="purchaseDate" />
-		<result column="monthly_purchase_amount_10" property="monthlyPurchaseAmount0" />
+		<result column="monthly_purchase_amount_10" property="monthlyPurchaseAmount10" />
 		<result column="performance_pool_coefficient" property="performancePoolCoefficient" />
 		<result column="effective_current_sales_scale" property="effectiveCurrentSalesScale" />
 		<result column="deferred_next_month" property="deferredNextMonth" />
@@ -26,6 +26,6 @@
 
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
-        id, user_name AS userName, phone_number AS phoneNumber, report_or_allot AS reportOrAllot, report_or_allot_date AS reportOrAllotDate, investment_adviser AS investmentAdviser, user_identify AS userIdentify, basic_product_name AS basicProductName, monthly_purchase_amount AS monthlyPurchaseAmount, current_assets_total AS currentAssetsTotal, purchase_date AS purchaseDate, monthly_purchase_amount_10 AS monthlyPurchaseAmount0, performance_pool_coefficient AS performancePoolCoefficient, effective_current_sales_scale AS effectiveCurrentSalesScale, deferred_next_month AS deferredNextMonth, mtime, ctime
+        id, user_name AS userName, phone_number AS phoneNumber, report_or_allot AS reportOrAllot, report_or_allot_date AS reportOrAllotDate, investment_adviser AS investmentAdviser, user_identify AS userIdentify, basic_product_name AS basicProductName, monthly_purchase_amount AS monthlyPurchaseAmount, current_assets_total AS currentAssetsTotal, purchase_date AS purchaseDate, monthly_purchase_amount_10 AS monthlyPurchaseAmount10, performance_pool_coefficient AS performancePoolCoefficient, effective_current_sales_scale AS effectiveCurrentSalesScale, deferred_next_month AS deferredNextMonth, mtime, ctime
     </sql>
 </mapper>

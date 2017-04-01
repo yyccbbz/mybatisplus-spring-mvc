@@ -87,7 +87,7 @@ public class PaCurrentSalesScaleAccounting implements Serializable {
 	 * 申购金额/10（千元）
 	 */
 	@TableField(value="monthly_purchase_amount_10")
-	private Double monthlyPurchaseAmount0;
+	private Double monthlyPurchaseAmount10;
 
 	/**
 	 * 业绩池系数
@@ -207,12 +207,12 @@ public class PaCurrentSalesScaleAccounting implements Serializable {
 		this.purchaseDate = purchaseDate;
 	}
 
-	public Double getMonthlyPurchaseAmount0() {
-		return monthlyPurchaseAmount0;
+	public Double getMonthlyPurchaseAmount10() {
+		return monthlyPurchaseAmount10;
 	}
 
-	public void setMonthlyPurchaseAmount0(Double monthlyPurchaseAmount0) {
-		this.monthlyPurchaseAmount0 = monthlyPurchaseAmount0;
+	public void setMonthlyPurchaseAmount10(Double monthlyPurchaseAmount10) {
+		this.monthlyPurchaseAmount10 = monthlyPurchaseAmount10;
 	}
 
 	public Integer getPerformancePoolCoefficient() {

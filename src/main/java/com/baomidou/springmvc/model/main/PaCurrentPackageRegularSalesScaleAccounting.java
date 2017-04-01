@@ -87,7 +87,7 @@ public class PaCurrentPackageRegularSalesScaleAccounting implements Serializable
 	 * 申购金额/5
 	 */
 	@TableField(value="monthly_purchase_amount_5")
-	private Double monthlyPurchaseAmount;
+	private Double monthlyPurchaseAmount5;
 
 	/**
 	 * 业绩池系数
@@ -207,12 +207,12 @@ public class PaCurrentPackageRegularSalesScaleAccounting implements Serializable
 		this.purchaseDate = purchaseDate;
 	}
 
-	public Double getMonthlyPurchaseAmount() {
-		return monthlyPurchaseAmount;
+	public Double getMonthlyPurchaseAmount5() {
+		return monthlyPurchaseAmount5;
 	}
 
-	public void setMonthlyPurchaseAmount(Double monthlyPurchaseAmount) {
-		this.monthlyPurchaseAmount = monthlyPurchaseAmount;
+	public void setMonthlyPurchaseAmount5(Double monthlyPurchaseAmount5) {
+		this.monthlyPurchaseAmount5 = monthlyPurchaseAmount5;
 	}
 
 	public Integer getPerformancePoolCoefficient() {

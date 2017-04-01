@@ -30,16 +30,18 @@ public class ClExtUserServiceImpl extends BaseServiceImpl<ClExtUserMapper, ClExt
         String search = StringUtil.getStrEmpty(params.get("search"));
         int current = IntegerUtil.getIntZero(params.get("currentPage"));
         int size = IntegerUtil.getIntZero(params.get("pageSize"));
-        Page<ClExtUser> page = new Page<ClExtUser>(current, size);
+        Page<ClExtUser> page = new Page<>(current, size);
 
-        List<ClExtUser> userList = baseMapper.selectPage(
+        List<ClExtUser> recordsList = baseMapper.selectPage(
                 page,
-                new EntityWrapper<ClExtUser>().like("phone_number",search)
-                        .or("user_name",search)
+                new EntityWrapper<ClExtUser>().like("phone_number", search)
+
         );
 
-//        page.setRecords(userList);
+        page.setRecords(recordsList);
         System.out.println("page = " + page);
+        System.out.println("总数 = " + page.getTotal() + "当前页 = " + page.getCurrent() + "每页大小 = "
+                + page.getSize() + "数据集合 = " + page.getRecords());
         return page;
     }
 }

@@ -109,9 +109,9 @@
     </bean>
 
     <!-- 使用通用mp 需要定义sqlSession -->
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+    <!--<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
-    </bean>
+    </bean>-->
 
     <!-- 配置事务管理 -->
     <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
