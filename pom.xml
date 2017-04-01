@@ -183,7 +183,16 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
+		<!-- ehcache -->
+		<dependency>
+			<groupId>org.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+
+
 	</dependencies>
+
 
 	<build>
 		<finalName>mybatisplus-spring-mvc</finalName>
