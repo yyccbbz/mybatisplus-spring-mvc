@@ -41,17 +41,23 @@
         <init-param>
             <description>SpringMVC</description>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/spring-mvc.xml</param-value>
+            <!--<param-value>classpath:spring/spring-mvc.xml</param-value>-->
+            <param-value>classpath:spring/spring-mvc-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
-        <url-pattern>/</url-pattern>
+        <!--<url-pattern>/</url-pattern>-->
+        <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
     <!-- Session超时时间 -->
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>

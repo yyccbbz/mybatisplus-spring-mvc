@@ -5,7 +5,6 @@ import com.baomidou.springmvc.common.utils.IntegerUtil;
 import com.baomidou.springmvc.common.utils.StringUtil;
 import com.baomidou.springmvc.controller.BaseController;
 import com.baomidou.springmvc.model.main.ClExtUser;
-import com.baomidou.springmvc.service.main.IClAllotUserService;
 import com.baomidou.springmvc.service.main.IClExtUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
